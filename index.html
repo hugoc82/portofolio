@@ -1,12 +1,263 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hugo Capelle - Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hugo Capelle — Portfolio</title>
+  <meta name="description" content="Portfolio de Hugo Capelle, développeur web (PHP 8.2, MVC, MySQL). Projets, CV et contacts." />
+
+  <!-- Minimal reset + design -->
+  <style>
+    :root{
+      --bg:#0b0f14; --card:#121821; --soft:#1a2230; --text:#e6edf3; --muted:#a9b2be;
+      --brand:#61dafb; --accent:#7cf5c5; --border:#273142;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+         background:linear-gradient(180deg,#0b0f14,#0e141c 35%,#0b0f14);
+         color:var(--text);}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{opacity:.9}
+    img{max-width:100%;display:block}
+    .container{width:min(1100px,92%);margin-inline:auto}
+    header{position:sticky;top:0;background:rgba(11,15,20,.75);backdrop-filter:saturate(140%) blur(8px);
+           border-bottom:1px solid var(--border); z-index:10}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{font-weight:700;letter-spacing:.2px}
+    .navlinks a{margin-left:1rem;padding:.5rem .7rem;border-radius:10px}
+    .navlinks a:hover{background:var(--soft)}
+    .hero{padding:5rem 0 3.5rem;display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center}
+    .chip{display:inline-block;padding:.35rem .6rem;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:.86rem}
+    h1{font-size:clamp(1.8rem,4.2vw,3rem);line-height:1.1;margin:.7rem 0 1rem}
+    p.lead{color:var(--muted);font-size:1.05rem}
+    .cta{display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap}
+    .btn{background:var(--brand);color:#09131a;border:0;padding:.8rem 1rem;border-radius:12px;font-weight:700}
+    .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+
+    section{padding:3.5rem 0;border-top:1px solid var(--border)}
+    h2{font-size:1.6rem;margin:0 0 1rem}
+    .grid{display:grid;gap:1rem}
+    @media(min-width:760px){.grid.cols-3{grid-template-columns:repeat(3,1fr)} .grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden}
+    .card .body{padding:1rem}
+    .meta{color:var(--muted);font-size:.92rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.6rem}
+    .tag{font-size:.78rem;border:1px solid var(--border);padding:.2rem .5rem;border-radius:999px;color:var(--muted)}
+    .actions{display:flex;gap:.6rem;margin-top:.8rem;flex-wrap:wrap}
+    .actions a{border:1px solid var(--border);padding:.45rem .65rem;border-radius:10px}
+    .embed{width:100%;height:620px;border:1px solid var(--border);border-radius:14px;background:#0b0f14}
+
+    footer{padding:2.5rem 0;color:var(--muted);text-align:center;border-top:1px solid var(--border)}
+    .social{display:flex;gap:.7rem;justify-content:center;margin-top:.6rem;flex-wrap:wrap}
+    .pill{border:1px solid var(--border);padding:.45rem .7rem;border-radius:999px}
+    /* small niceties */
+    .avatar{width:150px;height:150px;border-radius:16px;object-fit:cover;border:1px solid var(--border)}
+    .kpi{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.8rem}
+    .kpi div{border:1px solid var(--border);background:var(--soft);padding:.6rem .8rem;border-radius:12px}
+    .muted{color:var(--muted)}
+    .sep{height:1px;background:var(--border);margin:1.2rem 0}
+  </style>
 </head>
+
 <body>
-  <h1>Hello, I’m Hugo Capelle</h1>
-  <p>This page is under construction 🚧</p>
+  <!-- NAV -->
+  <header>
+    <div class="container">
+      <nav aria-label="Navigation principale">
+        <div class="brand">Hugo Capelle</div>
+        <div class="navlinks" role="navigation">
+          <a href="#about">À propos</a>
+          <a href="#portfolio">Projets</a>
+          <a href="#resume">CV</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="container hero">
+    <div>
+      <span class="chip">Développeur web — PHP 8.2 · MVC · MySQL</span>
+      <h1>Construire des apps utiles, propres et livrées.</h1>
+      <p class="lead">
+        Salut, je suis Hugo. J’aime les backends simples, la qualité de code et les projets concrets.
+      </p>
+      <div class="kpi">
+        <div>PHP 8.2 • MVC</div>
+        <div>MySQL • Transactions</div>
+        <div>Git • CI de base</div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="#portfolio">Voir mes projets</a>
+        <a class="btn ghost" href="mailto:hugocapelle@orange.fr">Me contacter</a>
+      </div>
+    </div>
+    <div style="justify-self:end">
+      <!-- Photo optionnelle -->
+      <!-- Remplace src par ta photo (fichier à placer dans le repo) -->
+      <img class="avatar" src="photo-hugo.jpg" alt="Photo de Hugo Capelle" />
+      <p class="muted" style="margin-top:.5rem">Photo pro (optionnelle)</p>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2>À propos</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <div class="body">
+            <p>
+              J’ai d’abord été formé à l’<strong>AFPA (DWWM)</strong> où j’ai appris les fondamentaux du web par les projets :
+              <strong>PHP 8.2 (structure MVC)</strong>, modélisation <strong>MySQL</strong>, <strong>Git</strong> et livraisons itératives.
+              Cette base pratique m’a donné envie d’aller plus loin sur les pratiques d’ingénierie et le travail d’équipe.
+            </p>
+            <p>
+              J’ai rejoint <strong>Holberton</strong> car son modèle d’apprentissage par projets et par pairs me pousse
+              à livrer de vraies features, obtenir des retours structurés et <em>élever le niveau de qualité</em>.
+            </p>
+            <div class="sep"></div>
+            <p class="meta">Langues : Français (natif), Espagnol (avancé), Anglais (bon)</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <p class="meta">Stack & intérêts</p>
+            <div class="tags">
+              <span class="tag">PHP 8.2</span><span class="tag">MVC</span><span class="tag">RBAC</span>
+              <span class="tag">REST</span><span class="tag">MySQL</span><span class="tag">Transactions</span>
+              <span class="tag">Git / Reviews</span><span class="tag">OVH</span><span class="tag">CI (lint/tests)</span>
+              <span class="tag">Security (sessions)</span>
+            </div>
+            <div class="sep"></div>
+            <p class="muted">Je cherche un environnement où je peux livrer souvent, documenter clairement et apprendre par itération.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="container">
+      <h2>Projets</h2>
+      <div class="grid cols-3">
+        <!-- PROJET 1 -->
+        <article class="card">
+          <!-- TODO: remplace l’image par une capture du projet -->
+          <img src="captures/mission-portal.png" alt="Mission Coordination Portal - capture" />
+          <div class="body">
+            <h3>Mission Coordination Portal</h3>
+            <p class="muted">Application pour ONG en <strong>PHP 8.2 MVC</strong> + <strong>MySQL</strong> pour gérer bénévoles & missions.</p>
+            <div class="tags">
+              <span class="tag">RBAC</span><span class="tag">Transactions</span><span class="tag">CI simple</span>
+            </div>
+            <div class="actions">
+              <!-- TODO: mets le bon repo -->
+              <a href="https://github.com/hugoc82/mission-portal" target="_blank" rel="noopener">GitHub</a>
+              <!-- TODO: mets le lien de démo si tu en as un -->
+              <a href="#" target="_blank" rel="noopener">Démo</a>
+              <a href="https://github.com/hugoc82/mission-portal#readme" target="_blank" rel="noopener">README</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJET 2 -->
+        <article class="card">
+          <img src="captures/resume-site.png" alt="Site CV - capture" />
+          <div class="body">
+            <h3>Site CV statique</h3>
+            <p class="muted">Page personnelle déployée sur GitHub Pages. Ancre navigation, sections claires et design sobre.</p>
+            <div class="tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Accessibilité</span>
+            </div>
+            <div class="actions">
+              <a href="https://github.com/hugoc82/portofolio" target="_blank" rel="noopener">GitHub</a>
+              <a href="#" target="_blank" rel="noopener">Démo</a>
+              <a href="https://github.com/hugoc82/portofolio#readme" target="_blank" rel="noopener">README</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJET 3 -->
+        <article class="card">
+          <img src="captures/php-crud.png" alt="CRUD PHP - capture" />
+          <div class="body">
+            <h3>Mini CRUD PHP</h3>
+            <p class="muted">Exemple pédagogique : routing simple, formulaires sécurisés, pagination MySQL.</p>
+            <div class="tags">
+              <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Validation</span>
+            </div>
+            <div class="actions">
+              <a href="https://github.com/hugoc82" target="_blank" rel="noopener">GitHub</a>
+              <a href="#" target="_blank" rel="noopener">Démo</a>
+              <a href="#" target="_blank" rel="noopener">README</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume">
+    <div class="container">
+      <h2>CV</h2>
+      <p class="muted">Vous pouvez consulter mon CV ci-dessous ou le télécharger en PDF.</p>
+      <div class="actions" style="margin: .8rem 0 1rem">
+        <a class="btn" href="Hugo_Capelle_Resume.pdf" download>Télécharger le CV (PDF)</a>
+        <!-- Optionnel : lien Google Drive si tu préfères -->
+        <!-- <a class="btn ghost" href="#" target="_blank" rel="noopener">Voir sur Google Drive</a> -->
+      </div>
+      <!-- L’aperçu intégré fonctionnera dès que le fichier PDF sera dans le repo -->
+      <embed class="embed" src="Hugo_Capelle_Resume.pdf" type="application/pdf" />
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <div class="body">
+            <p><strong>Email :</strong> <a href="mailto:hugocapelle@orange.fr">hugocapelle@orange.fr</a></p>
+            <p><strong>Téléphone :</strong> <a href="tel:+33640788062">+33 6 40 78 80 62</a></p>
+            <div class="social">
+              <a class="pill" href="https://www.linkedin.com/in/hugo-capelle-1b0780394/" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="pill" href="https://github.com/hugoc82" target="_blank" rel="noopener">GitHub</a>
+              <!-- Optionnel -->
+              <a class="pill" href="#" target="_blank" rel="noopener">Twitter</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <p class="meta">Me laisser un message</p>
+            <!-- Formulaire sans backend via Formspree (gratuit) -->
+            <!-- Remplace action par ton endpoint Formspree une fois créé -->
+            <form action="https://formspree.io/f/your-id" method="POST">
+              <label>Nom<br/><input required name="name" style="width:100%;padding:.6rem;border-radius:10px;border:1px solid var(--border);background:var(--soft);color:var(--text)"></label><br/><br/>
+              <label>Email<br/><input required type="email" name="email" style="width:100%;padding:.6rem;border-radius:10px;border:1px solid var(--border);background:var(--soft);color:var(--text)"></label><br/><br/>
+              <label>Message<br/><textarea required name="message" rows="5" style="width:100%;padding:.6rem;border-radius:10px;border:1px solid var(--border);background:var(--soft);color:var(--text)"></textarea></label><br/><br/>
+              <button class="btn" type="submit">Envoyer</button>
+              <span class="muted">• ou écrivez-moi directement par email</span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © <span id="y"></span> Hugo Capelle — Fait avec ❤️, HTML & CSS. Hébergé sur GitHub Pages.
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
